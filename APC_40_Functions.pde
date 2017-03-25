@@ -1,42 +1,33 @@
-void controllerChange(int channel, int number, int value) {
-  // Receive a controllerChange
-  /*println();
-   println("Controller Change:");
-   println("--------");
-   println("Channel:"+channel);
-   println("Number:"+number);
-   println("Value:"+value);*/
+public void SizeX(float sizeXtemp) {
+  sizeX = map(sizeXtemp, 0, 1, 0, width/4);
+}
 
-  if ((channel == 0) && (number == 7)) {
-    sizeX = map(value, 0, 127, 0, width/4);
-  }
+public void SizeY(float sizeYtemp) {
+  sizeY = map(sizeYtemp, 0, 1, 0, height);
+}
 
-  if ((channel == 1) && (number == 7)) {
-    sizeY = map(value, 0, 127, 0, height);
-  }
+public void Red(float redTemp) {
+  shade[0] = map(redTemp, 0, 1, 0, 255);
+}
 
-  if ((channel == 2) && (number == 7)) {
-    shade[0] = map(value, 0, 127, 0, 255);
-  }
+public void Green(float greenTemp) {
+  shade[1] = map(greenTemp, 0, 1, 0, 255);
+}
 
-  if ((channel == 3) && (number == 7)) {
-    shade[1] = map(value, 0, 127, 0, 255);
-  }
+public void Blue(float blueTemp) {
+  shade[2] = map(blueTemp, 0, 1, 0, 255);
+}
 
-  if ((channel == 4) && (number == 7)) {
-    shade[2] = map(value, 0, 127, 0, 255);
-  }
+public void Xrange(float xRangeTemp) {
+  maxXdiff = map(xRangeTemp, 0, 1, 0, width/8);
+}
 
-  if ((channel == 5) && (number == 7)) {
-    maxXdiff = expoentialRange(width/8, 1.2, value, 128);
-  }
+public void Yrange(float yRangeTemp) {
+  maxYdiff = map(yRangeTemp, 0, 1, 0, height);
+}
 
-  if ((channel == 6) && (number == 7)) {
-    maxYdiff = expoentialRange(height, 1.2, value, 128);
+public void Speed(float speedTemp) {
+  for (int i = 0; i <= 3; i = i + 1) {
+    square[i].changeSpeed(speedTemp);
   }
-
-  if ((channel == 7) && (number == 7)) {
-    slewRate = map(value, 0, 127, 0, slewRateMax);
-  }
-  
 }
